@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheAIHusttler - Empowering Digital Creators</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #111827;
+            color: #ffffff;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #00C6FF, #FF0099);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 198, 255, 0.3);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #00C6FF, #FF0099);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00C6FF, #FF0099);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #00C6FF;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.9)),
+                        url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600') no-repeat center center/cover;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #1F2937;
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #00C6FF;
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #00C6FF;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: #1F2937;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #6B7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #00C6FF;
+            margin: 15px 0;
+            font-size: 1.2rem;
+        }
+        
+        /* Founder Section */
+        .founder-section {
+            background-color: #1a202c;
+        }
+        
+        .founder-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .founder-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #FF0099, #00C6FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .founder-content p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .achievements {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .achievement-item {
+            text-align: center;
+        }
+        
+        .achievement-number {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #FF0099, #00C6FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, rgba(0, 198, 255, 0.1), rgba(255, 0, 153, 0.1));
+            border-radius: 15px;
+            padding: 60px;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .newsletter-form button {
+            padding: 15px 25px;
+            background: linear-gradient(90deg, #00C6FF, #FF0099);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1F2937;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: #00C6FF;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #FF0099;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">TheAIHusttler</a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#founder">Founder</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#" class="btn btn-primary">Get Started</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Empowering Creators.<br>Automating Hustles.</h1>
+                <p>Unlock digital wealth with AI-powered tools and resources designed to help you build passive income streams and scale your online business.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">Start Hustling</a>
+                    <a href="#" class="btn" style="border: 2px solid #00C6FF; color: #00C6FF;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What We Offer</h2>
+                <p>Comprehensive solutions to help you thrive in the digital economy</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI Tools Discovery</h3>
+                    <p>Curated AI tools with step-by-step tutorials for content creation, automation, and business growth.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Passive Income Models</h3>
+                    <p>Proven business models like POD stores, faceless YouTube, and affiliate marketing.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-box-open"></i></div>
+                    <h3>Digital Products</h3>
+            <p>Ready-to-use templates, content packs, and AI-generated digital products.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-sitemap"></i></div>
+                    <h3>Automation Systems</h3>
+                    <p>Complete guides to automate your online income with AI tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section" style="background-color: #1a202c;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Products</h2>
+                <p>Start selling these digital products today</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>AI Mystery Box</h3>
+                        <p>Collection of AI-generated content ready for monetization</p>
+                        <div class="price">$97</div>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Viral Content Pack</h3>
+                        <p>Done-for-you social media content templates</p>
+                        <div class="price">$49</div>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>Notion Mastery</h3>
+                        <p>Complete Notion setup for content creators</p>
+                        <div class="price">$27</div>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>POD Starter Kit</h3>
+                        <p>Everything you need to start print-on-demand</p>
+                        <div class="price">$67</div>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="section founder-section">
+        <div class="container">
+            <div class="founder-content">
+                <h2>Meet Varshada</h2>
+                <p>The visionary behind TheAIHusttler, Varshada is a digital business strategist who has mastered the art of building profitable online businesses without showing her face.</p>
+                <p>With a passion for automation and AI, she has helped thousands of creators break free from the 9-to-5 grind by teaching them how to leverage technology to create passive income streams.</p>
+                <p>Her unconventional approach to digital entrepreneurship focuses on systems over hustle, automation over manual work, and financial freedom over fame.</p>
+                
+                <div class="achievements">
+                    <div class="achievement-item">
+                        <div class="achievement-number">5000+</div>
+                        <div>Students Trained</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number">9 Figures</div>
+                        <div>Revenue Generated</div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-number">100+</div>
+                        <div>Digital Products</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section">
+        <div class="container">
+            <div class="newsletter">
+                <h2>Join Our Tribe</h2>
+                <p>Get exclusive AI hustle strategies, tools recommendations, and early access to new products</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>TheAIHusttler</h3>
+                    <p style="opacity: 0.8; margin-bottom: 20px;">Empowering the digital generation with AI-driven, passive online businesses.</p>
+                    <div class="social-links">
+                        <a href
